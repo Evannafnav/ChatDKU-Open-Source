@@ -1,7 +1,10 @@
 .venv/
 local_docs/
 local_questions.jsonl
+demo_docs/
+demo_questions.jsonl
 __pycache__/
 *.pyc
 .env
 *.jsonl.results.json
+evaluation_results/
