@@ -2,6 +2,7 @@ from chatdku.core.tools.retriever.base_retriever import NodeWithScore
 from chatdku.core.tools.retriever.keyword_retriever import KeywordRetriever
 from chatdku.core.tools.retriever.reranker import rerank
 from chatdku.core.tools.retriever.vector_retriever import VectorRetriever
+from chatdku.core.tools.source_metadata import normalize_source_metadata
 from chatdku.core.tools.utils import QueryTimeoutError, timeout
 
 
@@ -9,7 +10,9 @@ def nodes_to_dicts(nodes: list[NodeWithScore]) -> list:
     result = []
     for node in nodes:
         if isinstance(node, NodeWithScore):
-            result.append([{"text": node.text, "metadata": node.metadata}])
+            result.append(
+                [{"text": node.text, "metadata": normalize_source_metadata(node.metadata)}]
+            )
         if isinstance(node, str):
             result.append(node)
     return result
