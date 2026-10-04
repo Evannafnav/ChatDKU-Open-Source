@@ -1,0 +1,7 @@
+.venv/
+local_docs/
+local_questions.jsonl
+__pycache__/
+*.pyc
+.env
+*.jsonl.results.json
