@@ -56,8 +56,10 @@ python -m pytest -q
 
 | Configuration | Retrieval hit@5 | Answer correctness | Source support | Status |
 | --- | --- | --- | --- | --- |
-| Keyword-only smoke checks | Not a labeled benchmark | Not measured | Not measured | Unit checks pass |
+| Keyword-only synthetic PDF smoke (2 pages, 2 queries) | 2/2 hit@5 | Not measured | Not measured | CLI and page extraction pass; too small to compare models |
 | Embedding model A vs B | Pending | — | — | Requires model downloads and labeled corpus |
 | Local LLM A vs B | — | Pending | Pending | Requires supported local server and hardware |
 
 The candidate-task PDF requests locally hosted SGLang, vLLM, or MLX (not Ollama), DSPy, two retrieval tools, citations with document and page, bilingual use, and empirical comparison. This directory implements the pipeline and benchmark entry points, while the model-hosted comparison remains pending. The parent repository's metadata normalization fix is a separate, small codebase improvement.
+
+The smoke corpus was generated solely to check the CLI: page 1 says a library closes at midnight on Friday; page 2 says a shuttle leaves at seven on Monday. Both corresponding English queries included the expected page among the returned hits. Because the entire corpus has only two pages and `k=5`, the 2/2 figure provides no evidence of retrieval quality on realistic documents or Chinese queries.
